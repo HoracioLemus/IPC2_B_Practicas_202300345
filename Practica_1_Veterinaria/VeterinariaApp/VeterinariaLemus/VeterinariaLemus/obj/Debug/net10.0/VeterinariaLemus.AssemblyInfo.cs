@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VeterinariaLemus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b801ffaad9bc05fba01792cf1269434bf1dbc68")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09d19853d40e3807080b3a93efd5209992c28692")]
 [assembly: System.Reflection.AssemblyProductAttribute("VeterinariaLemus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VeterinariaLemus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

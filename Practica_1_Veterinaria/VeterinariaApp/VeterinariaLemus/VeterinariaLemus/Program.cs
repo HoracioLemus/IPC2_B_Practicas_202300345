@@ -9,7 +9,9 @@ while (!salir)
     Console.WriteLine("1. Registrar Mascota");
     Console.WriteLine("2. Mostrar Información de Mascotas");
     Console.WriteLine("3. Calcular Dosis de Medicamento");
-    Console.WriteLine("4. Salir");
+    Console.WriteLine("4. Cambiar Estado de Mascota");
+    Console.WriteLine("5. Eliminar Mascota");
+    Console.WriteLine("6. Salir");
     Console.Write("Seleccione una opción: ");
     string opcion = Console.ReadLine();
 
@@ -25,6 +27,12 @@ while (!salir)
             CalcularDosisMedicamento(mascotas);
             break;
         case "4":
+            CambiarEstadoMascota(mascotas);
+            break;
+        case "5":
+            EliminarMascota(mascotas);
+            break;
+        case "6":
             salir = true;
             break;
         default:
@@ -131,4 +139,76 @@ void CalcularDosisMedicamento(List<Mascota> mascotas)
     Console.WriteLine($"La dosis total para {mascotaSeleccionada.Nombre} es: {dosisTotal} mg");
     Console.WriteLine("Presione Enter para regresar al menú...");
     Console.ReadLine();
+}
+
+void CambiarEstadoMascota(List<Mascota> mascotas)
+{
+    if (mascotas.Count == 0)
+    {
+        Console.WriteLine("No hay mascotas registradas.");
+        Console.WriteLine("Presione Enter para regresar al menú...");
+        Console.ReadLine();
+        return;
+    }
+
+    Console.WriteLine("Seleccione la mascota para cambiar su estado:");
+    for (int i = 0; i < mascotas.Count; i++) Console.WriteLine($"{i + 1}. Código: {mascotas[i].Codigo} , Nombre: {mascotas[i].Nombre}");
+    Console.Write("Opción: ");
+    int opcion = Convert.ToInt32(Console.ReadLine()) - 1;
+
+    if (opcion < 0 || opcion >= mascotas.Count)
+    {
+        Console.WriteLine("Opción inválida.");
+        return;
+    }
+
+    Mascota mascotaSeleccionada = mascotas[opcion];
+    Console.Write($"El estado actual de {mascotaSeleccionada.Nombre} es {(mascotaSeleccionada.Enfermo ? "Enfermo" : "Sano")}. ¿Desea cambiarlo? (S/N): ");
+    bool cambiarEstado = Console.ReadLine().ToUpper() == "S";
+
+    if (cambiarEstado)
+    {
+        mascotaSeleccionada.Cambiar_Estado(!mascotaSeleccionada.Enfermo);
+        Console.WriteLine($"El estado de {mascotaSeleccionada.Nombre} ha sido cambiado a {(mascotaSeleccionada.Enfermo ? "Enfermo" : "Sano")}.");
+    }
+    else
+    {
+        Console.WriteLine("No se realizaron cambios.");
+    }
+}
+
+void EliminarMascota(List<Mascota> mascotas)
+{
+    if (mascotas.Count == 0)
+    {
+        Console.WriteLine("No hay mascotas registradas.");
+        Console.WriteLine("Presione Enter para regresar al menú...");
+        Console.ReadLine();
+        return;
+    }
+
+    Console.WriteLine("Seleccione la mascota para eliminar:");
+    for (int i = 0; i < mascotas.Count; i++) Console.WriteLine($"{i + 1}. Código: {mascotas[i].Codigo} , Nombre: {mascotas[i].Nombre}");
+    Console.Write("Opción: ");
+    int opcion = Convert.ToInt32(Console.ReadLine()) - 1;
+
+    if (opcion < 0 || opcion >= mascotas.Count)
+    {
+        Console.WriteLine("Opción inválida.");
+        return;
+    }
+
+    Mascota mascotaSeleccionada = mascotas[opcion];
+    Console.Write($"¿Está seguro de que desea eliminar a {mascotaSeleccionada.Nombre}? (S/N): ");
+    bool confirmarEliminacion = Console.ReadLine().ToUpper() == "S";
+
+    if (confirmarEliminacion)
+    {
+        mascotas.RemoveAt(opcion);
+        Console.WriteLine($"{mascotaSeleccionada.Nombre} ha sido eliminada de la lista.");
+    }
+    else
+    {
+        Console.WriteLine("No se realizaron cambios.");
+    }
 }
