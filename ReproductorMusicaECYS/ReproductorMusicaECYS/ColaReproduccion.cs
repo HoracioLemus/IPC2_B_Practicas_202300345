@@ -38,9 +38,9 @@ public class ColaReproduccion
         Cancion cancionExtraida = frente.Cancion;
         frente = frente.Siguiente;
 
-        if (EstaVacia())
+        if (frente==null)
         {
-            return null;
+            final = null;
         }
         
         return cancionExtraida;
