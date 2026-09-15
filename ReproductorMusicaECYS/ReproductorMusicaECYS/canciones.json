@@ -3,12 +3,42 @@
     "titulo": "Bohemian Rhapsody",
     "artista": "Queen",
     "genero": "Rock",
-    "duracion": 6
+    "duracion": "6:00"
   },
   {
     "titulo": "Blinding Lights",
     "artista": "The Weeknd",
     "genero": "Pop",
-    "duracion": 3
+    "duracion": "3:00"
+  },
+  {
+    "Titulo": "Rockstar",
+    "Artista": "Ado",
+    "Genero": "J-Pop",
+    "Duracion": "3:05"
+  },
+  {
+    "Titulo": "Ussewa",
+    "Artista": "Ado",
+    "Genero": "J-Pop",
+    "Duracion": "3:24"
+  },
+  {
+    "Titulo": "Stay With Me",
+    "Artista": "Miki Matsubara",
+    "Genero": "City Pop",
+    "Duracion": "5:11"
+  },
+  {
+    "Titulo": "Como Te Atreves",
+    "Artista": "Morat",
+    "Genero": "Pop Latino",
+    "Duracion": "3:40"
+  },
+  {
+    "Titulo": "Besos en Guerra",
+    "Artista": "Morat",
+    "Genero": "Pop Latino",
+    "Duracion": "3:58"
   }
 ]

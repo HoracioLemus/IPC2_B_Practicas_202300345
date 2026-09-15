@@ -13,5 +13,5 @@ public class Cancion
     public string Genero { get; set; }
     
     [JsonPropertyName("duracion")]
-    public int Duracion { get; set; }
+    public string Duracion { get; set; }
 }

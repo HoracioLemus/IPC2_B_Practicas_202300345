@@ -29,9 +29,9 @@ public class ArbolBinario
 
         if (comprobacion <0)
         {
-            nodo.Izquierdo = InsertarRecursivo(nodo.Derecho, cancion);
+            nodo.Izquierdo = InsertarRecursivo(nodo.Izquierdo, cancion);
         }
-        else
+        else if (comprobacion > 0)
         {
             nodo.Derecho = InsertarRecursivo(nodo.Derecho, cancion);
         }
@@ -53,6 +53,36 @@ public class ArbolBinario
             MostrarEnOrdenRecursivo(nodo.Izquierdo);
             Console.WriteLine($"> {nodo.Cancion.Titulo} - {nodo.Cancion.Artista}");
             MostrarEnOrdenRecursivo(nodo.Derecho);
+        }
+    }
+
+    public Cancion Buscar(string titulo)
+    {
+        return BuscarRecursivo(raiz, titulo);
+    }
+    
+    //metodo privado que busca recursivamente
+    private Cancion BuscarRecursivo(NodoArbol nodo, string titulo)
+    {
+        if (nodo == null)
+        {
+            return null;
+        }
+
+        int comparacion = string.Compare(titulo, nodo.Cancion.Titulo, StringComparison.OrdinalIgnoreCase);
+
+
+        if (comparacion ==0)
+        {
+            return nodo.Cancion;
+        }
+        else if (comparacion < 0)
+        {
+            return BuscarRecursivo(nodo.Izquierdo, titulo);
+        }
+        else
+        {
+            return BuscarRecursivo(nodo.Derecho, titulo);
         }
     }
 }
