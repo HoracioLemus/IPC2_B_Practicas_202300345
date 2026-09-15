@@ -85,4 +85,52 @@ public class ArbolBinario
             return BuscarRecursivo(nodo.Derecho, titulo);
         }
     }
+
+    public string ObtenerCodigoGraphviz()
+    {
+        string dot = "digraph G {\n";
+        dot += " node [shale=box, style=\"filled,rounded\", fillcolor=\"#c8e6c9\", fontname=\"Arial\"];\n ";
+
+        if (raiz == null)
+        {
+            dot += " vacio [label=\"Arbol Vacio\", shape=plaintext, fontcolor=red];\n";
+        }
+        else
+        {
+            int contador = 0;
+            dot += GeneradorDotRecursivo(raiz, ref contador);
+        }
+
+        dot += "}\n";
+        return dot;
+    }
+
+    private string GeneradorDotRecursivo(NodoArbol nodo, ref int contador)
+    {
+        string resultado = "";
+        int idActual = contador;
+
+        string tituloLimpio = nodo.Cancion.Titulo.Replace("\"", "").Replace("{", "").Replace("}","").Replace("|","");
+        string artistaLimpio = nodo.Cancion.Artista.Replace("\"", "").Replace("{", "").Replace("}","").Replace("|","");
+
+        resultado += $" nodo{idActual} [label=\"{tituloLimpio}\\n{artistaLimpio}\"];\n";
+
+        if (nodo.Izquierdo != null)
+        {
+            contador++;
+            int idIzquierdo = contador;
+            resultado += $" nodo{idActual} -> nodo{idIzquierdo} [color=blue, label=\"Izq\"];\n";
+            resultado += GeneradorDotRecursivo(nodo.Izquierdo, ref contador);
+        }
+
+        if (nodo.Derecho !=null)
+        {
+            contador++;
+            int idDerecho = contador;
+            resultado += $" nodo{idActual} -> nodo{idDerecho} [color=red, label=\"Der\"];\n";
+            resultado += GeneradorDotRecursivo(nodo.Derecho, ref contador);
+        }
+
+        return resultado;
+    }
 }
