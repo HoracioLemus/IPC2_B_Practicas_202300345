@@ -6,7 +6,7 @@
 <h1>Calcular Dosis para @Model.Nombre</h1>
 <p>Tipo: @Model.Tipo | Peso: @Model.Peso kg</p>
 
-<from asp-action="Dosis" asp-route-id="@Model.Codigo" method="post">
+<form asp-action="CalcularDosis" asp-route-id="@Model.Codigo" method="post">
     <div class="mb-3">
         <label for="dosisPorKg" class="from-label">Dosis por kg (mg)</label>
         <input id="dosisPorKg" name="dosisPorKg" type="number" step ="any" class="form-control"/>
@@ -14,7 +14,7 @@
     </div>
     <button type="submit" class="btn btn-primary">Calcular</button>
     <a asp-action="Index" class="btn btn-secondary">Volver</a>
-</from>
+</form>
 
 @if (Model.DosisTotal != null)
 {

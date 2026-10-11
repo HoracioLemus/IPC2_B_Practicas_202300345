@@ -9,7 +9,7 @@
     ¿Seguro de eliminar la mascota <strong>@Model.Nombre</strong> (Código: @Model.Codigo)?
 </div>
 
-<form asp-action="DeleteConfirmed" asp-route-id="@Model.Codigo" method="post">
+<form asp-action="Eliminar" asp-route-id="@Model.Codigo" method="post">
     <button type="submit" class="btn btn-danger">Sí, eliminar</button>
     <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </form>
