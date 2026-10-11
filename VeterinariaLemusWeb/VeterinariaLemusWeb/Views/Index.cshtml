@@ -1,0 +1,58 @@
+@model ListaMascotas
+@{
+    ViewBag.Title = "Lista de Mascotas";
+}
+
+<h1>Veterinaria Lemus</h1>
+
+<p><a asp-action="Create" class = "btn btn-primary">Registrar mascota</a></p>
+
+@if (Model.Count == 0)
+{
+    <div class ="alert alert-info">No hay mascotas registradas.</div>
+}
+else
+{
+    <table class="table table-striped align-middle">
+        <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Propietario</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var m in Model)
+        {
+            <tr>
+                <td>@m.Codigo</td>
+                <td>@m.Nombre</td>
+                <td>@m.Tipo</td>
+                <td>@m.Propietario</td>
+                <td>
+                    @if (m.Enfermo)
+                    {
+                        <span class="badge bg-danger">Enfermo</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-success">Sano</span>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@m.Codigo" class="btn btn-sm btn-info">Ver</a>
+                    <a asp-action="Edit" asp-route-id="@m.Codigo" class="btn btn-sm btn-secondary">Editar</a>
+                    <a asp-action="Dosis" asp-route-id="@m.Codigo" class="btn btn-sm btn-primary">Dosis</a>
+                    <form asp-action="CambiarEstado" asp-route-id="@m.Codigo" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-sm btn-warning">Cambiar estado</button>
+                    </form>
+                    <a asp-action="Delete" asp-route-id="@m.Codigo" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
