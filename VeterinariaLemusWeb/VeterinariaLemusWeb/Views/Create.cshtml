@@ -1,0 +1,12 @@
+@model MascotaFormViewModel
+@{
+    ViewData["Title"] = "Registrar Mascota";
+}
+
+<h1>Registrar Mascota</h1>
+
+<form asp-action="Create" method="post">
+    <partial name="_MascotaForm" model = "Model"/>
+    <button type ="submit" class = "btn btn-primary">Registrar</button>
+    <a asp-action="Index" class = "btn btn-secondary">Cancelar</a>
+</form>

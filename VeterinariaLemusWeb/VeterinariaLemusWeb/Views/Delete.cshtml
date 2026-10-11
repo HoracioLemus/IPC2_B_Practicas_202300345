@@ -1,0 +1,15 @@
+@model Mascota
+@{
+    ViewData["Title"] = "Eliminar Mascota";
+}
+
+<h1>Eliminar Mascota</h1>
+
+<div class="alert alert-warning">
+    ¿Seguro de eliminar la mascota <strong>@Model.Nombre</strong> (Código: @Model.Codigo)?
+</div>
+
+<form asp-action="DeleteConfirmed" asp-route-id="@Model.Codigo" method="post">
+    <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

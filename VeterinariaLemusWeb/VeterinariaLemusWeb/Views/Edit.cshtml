@@ -1,0 +1,12 @@
+@model MascotaFormViewModel
+@{
+    ViewData["Title"] = "Editar Mascota";
+}
+
+<h1>Editar Mascota</h1>
+
+<from asp-action="Edit" asp-route-id="@Model.Codigo" method="post">
+    <partial name="_MascotaForm" model="Model" />
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</from>
